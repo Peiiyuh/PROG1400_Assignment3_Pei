@@ -4,11 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PageOne extends JPanel {
-    private static JButton frontBtn;  //why need static?
+    private JButton frontBtn;
 
     public PageOne(){
-        //this.setBounds(400,0,800,800);
+        //Set Panel Properties
         this.setLayout(null);
+        this.setVisible(true);
+
+        //Font
+        Font myFont = new Font("Calibri", Font.BOLD, 20);
 
         //title in 1st page
         JLabel programTitle = new JLabel("Welcome to Humans VS Pests!");
@@ -17,7 +21,7 @@ public class PageOne extends JPanel {
 
         //image in 1st page
         JLabel programImage = new JLabel();
-        programImage.setBounds(100,100,550,550);
+        programImage.setBounds(100,150,550,550);
         ImageIcon frontImage = new ImageIcon("src/Images/ftontPage.png");
         Image image = frontImage.getImage();
         Image newing = image.getScaledInstance(500,550,java.awt.Image.SCALE_SMOOTH);
@@ -26,15 +30,15 @@ public class PageOne extends JPanel {
 
         //button in 1st page
         frontBtn = new JButton("START!");
-        frontBtn.setBounds(600,650,150,50);
+        frontBtn.setFont(myFont);
+        frontBtn.setBounds(625,700,150,50);
 
         //Add all controls to Panel
         add(programTitle);
         add(programImage);
         add(frontBtn);
-        setVisible(true);
 
     }
 
-    public static JButton getFrontBtn() {return frontBtn;}  //getter for starter  //??why need static
+    public JButton getFrontBtn() {return frontBtn;}  //getter for starter  //??why need static
 }
