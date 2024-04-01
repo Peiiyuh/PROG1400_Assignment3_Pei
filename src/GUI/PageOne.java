@@ -28,6 +28,7 @@ public class PageOne extends JPanel {
         frontImage = new ImageIcon(newing);
         programImage.setIcon(frontImage);
 
+
         //button in 1st page
         frontBtn = new JButton("START!");
         frontBtn.setFont(myFont);

@@ -18,6 +18,8 @@ public class PageTwo extends JPanel {
     private JLabel iqValue;
     private JButton humanGo;
     private ArrayList<Human> humanList;
+    private JLabel humanPic;
+    private ArrayList<Human> humanPicList;
     private JTextArea toolBox;
     private JRadioButton spatula;
     private JRadioButton lid;
@@ -74,12 +76,18 @@ public class PageTwo extends JPanel {
         humanGo = new JButton("GO");
         humanGo.setFont(myFont);
         humanGo.setBounds(480,125,100,50);
-        humanList = new ArrayList<>();
         //Add human in list
-        humanList.add(new Human(userName.getText(),550, 120));
-        humanList.add(new Human(userName.getText(),350, 80));
-        humanList.add(new Human(userName.getText(),250, 175));
-        humanList.add(new Human(userName.getText(),150, 150));
+        humanList = new ArrayList<>();
+        humanList.add(new Human(userName.getText(),550, 120,new ImageIcon("src/Images/bro.png")));
+        humanList.add(new Human(userName.getText(),350, 80,new ImageIcon("src/Images/mom.png")));
+        humanList.add(new Human(userName.getText(),250, 175,new ImageIcon("src/Images/dad.png")));
+        humanList.add(new Human(userName.getText(),150, 150,new ImageIcon("src/Images/sis.png")));
+
+        //Human images
+        humanPic = new JLabel();
+        humanPic.setBounds(500,175,150,250);
+        //humanPic.setBorder(BorderFactory.createLineBorder(Color.BLACK));  //Source: https://stackoverflow.com/questions/43244092/java-gui-jlabel-with-fixed-border
+
         humanGo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,14 +95,11 @@ public class PageTwo extends JPanel {
                 int index = random.nextInt(humanList.size());
                 attackBaseValue.setText(Integer.toString(humanList.get(index).getAttackBase()));
                 iqValue.setText(Integer.toString(humanList.get(index).getIQ())); //https://stackoverflow.com/questions/4841559/how-to-convert-an-int-to-a-string
+                ImageIcon dimg = new ImageIcon(new ImageIcon(String.valueOf(humanList.get(index).getHumanPic())).getImage().getScaledInstance(150,250, Image.SCALE_SMOOTH));
+                humanPic.setIcon(dimg);  //https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
+
             }
         });
-
-
-//        //Human images
-//        humanPic = new JLabel();
-//        humanPic.setBounds(500,125,150,150);
-//        humanPic.setBorder(BorderFactory.createLineBorder(Color.BLACK));  //Source: https://stackoverflow.com/questions/43244092/java-gui-jlabel-with-fixed-border
 
         //Label for tools
         JLabel toolLabel = new JLabel("Choose your tool: ");
@@ -154,7 +159,6 @@ public class PageTwo extends JPanel {
         grpToolRads.add(this.peeler);
         grpToolRads.add(this.vacuum);
 
-
         //Pests information
         JLabel pestsInfoLabel = new JLabel("Pest's information: ");
         pestsInfoLabel.setFont(myFont);
@@ -171,8 +175,8 @@ public class PageTwo extends JPanel {
         insectsBtn = new JButton("Insects");
         insectsBtn.setFont(myFont);
         insectsBtn.setBounds(100,650,150,50);
-        insList = new ArrayList<>();
         //Add insects in list
+        insList = new ArrayList<>();
         insList.add(new Insects("John",60,100,"Low",false));
         insList.add(new Insects("Amy",200,150,"Medium",true));
         insList.add(new Insects("Taylor",100,120,"Medium",true));
@@ -189,8 +193,8 @@ public class PageTwo extends JPanel {
         mammalsBtn = new JButton("Mammals");
         mammalsBtn.setFont(myFont);
         mammalsBtn.setBounds(275,650,150,50);
-        mamList = new ArrayList<>();
         //Add mammals in list
+        mamList = new ArrayList<>();
         mamList.add(new Mammals("Peanut",350, 320, "High",true));
         mamList.add(new Mammals("Remy",300, 250, "High",true));
         mamList.add(new Mammals("Meatloaf",50, 500, "Low",false));
@@ -217,6 +221,7 @@ public class PageTwo extends JPanel {
         add(iqLabel);
         add(iqValue);
         add(humanGo);
+        add(humanPic);
         add(toolLabel);
         add(toolBox);
         add(spatula);
