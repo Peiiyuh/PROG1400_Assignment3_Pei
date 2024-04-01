@@ -1,5 +1,7 @@
 package Classes;
 
+import static java.lang.Integer.valueOf;
+
 public abstract class Creature {
     private String name;
     private int attackBase;

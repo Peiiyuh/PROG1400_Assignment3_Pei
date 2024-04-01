@@ -1,5 +1,6 @@
 package GUI;
 
+import Classes.Human;
 import Classes.Insects;
 import Classes.Mammals;
 import Classes.Tools;
@@ -15,7 +16,8 @@ public class PageTwo extends JPanel {
     private JTextField userName; //box for user to enter name
     private JLabel attackBaseValue;
     private JLabel iqValue;
-    private JLabel humanPic;
+    private JButton humanGo;
+    private ArrayList<Human> humanList;
     private JTextArea toolBox;
     private JRadioButton spatula;
     private JRadioButton lid;
@@ -55,7 +57,7 @@ public class PageTwo extends JPanel {
         attackBaseLabel.setFont(myFont);
         attackBaseLabel.setBounds(100,175,200,50);
         //Label for attack base value
-        attackBaseValue = new JLabel("Test value here ");
+        attackBaseValue = new JLabel();
         attackBaseValue.setFont(myFont);
         attackBaseValue.setBounds(250,175,200,50);
 
@@ -64,14 +66,35 @@ public class PageTwo extends JPanel {
         iqLabel.setFont(myFont);
         iqLabel.setBounds(100,225,200,50);
         //Label for IQ value
-        iqValue = new JLabel("Test value here ");
+        iqValue = new JLabel();
         iqValue.setFont(myFont);
         iqValue.setBounds(180,225,200,50);
 
-        //Human images
-        humanPic = new JLabel();
-        humanPic.setBounds(500,125,150,150);
-        humanPic.setBorder(BorderFactory.createLineBorder(Color.BLACK));  //Source: https://stackoverflow.com/questions/43244092/java-gui-jlabel-with-fixed-border
+        //Select human attackBase and IQ
+        humanGo = new JButton("GO");
+        humanGo.setFont(myFont);
+        humanGo.setBounds(480,125,100,50);
+        humanList = new ArrayList<>();
+        //Add human in list
+        humanList.add(new Human(userName.getText(),550, 120));
+        humanList.add(new Human(userName.getText(),350, 80));
+        humanList.add(new Human(userName.getText(),250, 175));
+        humanList.add(new Human(userName.getText(),150, 150));
+        humanGo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
+                int index = random.nextInt(humanList.size());
+                attackBaseValue.setText(Integer.toString(humanList.get(index).getAttackBase()));
+                iqValue.setText(Integer.toString(humanList.get(index).getIQ())); //https://stackoverflow.com/questions/4841559/how-to-convert-an-int-to-a-string
+            }
+        });
+
+
+//        //Human images
+//        humanPic = new JLabel();
+//        humanPic.setBounds(500,125,150,150);
+//        humanPic.setBorder(BorderFactory.createLineBorder(Color.BLACK));  //Source: https://stackoverflow.com/questions/43244092/java-gui-jlabel-with-fixed-border
 
         //Label for tools
         JLabel toolLabel = new JLabel("Choose your tool: ");
@@ -193,7 +216,7 @@ public class PageTwo extends JPanel {
         add(attackBaseValue);
         add(iqLabel);
         add(iqValue);
-        add(humanPic);
+        add(humanGo);
         add(toolLabel);
         add(toolBox);
         add(spatula);

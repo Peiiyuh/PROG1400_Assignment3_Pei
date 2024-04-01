@@ -7,9 +7,12 @@ public class Human extends Creature{
     private ImageIcon humanPic;
 
     //Constructor
-    public Human(String name, int attackBase, int IQ, ImageIcon humanPic) {
+    public Human(String name, int attackBase, int IQ) {
         super(name, attackBase);
         this.IQ = IQ;
-        this.humanPic = humanPic;
+    }
+
+    public int getIQ() {
+        return IQ;
     }
 }
