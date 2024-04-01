@@ -7,14 +7,14 @@ public class Mammals extends Pests{
     private ImageIcon mamPic;
 
     //Constructor
-    public Mammals(String name, int attackBase, int HP, String level, boolean hasTail) {
+    public Mammals(String name, int attackBase, int HP, String level, boolean hasTail, ImageIcon mamPic) {
         super(name, attackBase, HP, level);
         this.hasTail = hasTail;
+        this.mamPic = mamPic;
     }
 
-    //Setter
-    public void setMamPic(ImageIcon mamPic) {
-        this.mamPic = mamPic;
+    public ImageIcon getMamPic() {
+        return mamPic;
     }
 
     @Override

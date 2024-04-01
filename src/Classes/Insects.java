@@ -3,17 +3,18 @@ package Classes;
 import javax.swing.*;
 
 public class Insects extends Pests{
-    private boolean canFly;
+    private static boolean canFly;
     private ImageIcon insPic;
 
     //Constructor
-    public Insects(String name, int attackBase, int HP, String level, boolean canFly) {
+    public Insects(String name, int attackBase, int HP, String level, boolean canFly, ImageIcon insPic) {
         super(name, attackBase, HP, level);
         this.canFly = canFly;
+        this.insPic = insPic;
     }
 
-    public void setInsPic(ImageIcon insPic) {
-        this.insPic = insPic;
+    public ImageIcon getInsPic() {
+        return insPic;
     }
 
     @Override

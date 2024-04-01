@@ -19,4 +19,10 @@ public class Human extends Creature{
     public ImageIcon getHumanPic() {
         return humanPic;
     }
+
+
+    @Override
+    public String toString() {
+        return "My name is " + super.getName() + ", my attack base is " + super.getAttackBase() + ", and my IQ is " + IQ;
+    }
 }

@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
+    static ArrayList<Human> humanList;  //don't make it as private bc will be used in PageTwo
+    static ArrayList<Insects> insList;
+    static ArrayList<Mammals> mamList;
     public MainFrame(){
         //Set Frame Properties
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Exit program if hit x
@@ -19,7 +22,26 @@ public class MainFrame extends JFrame {
         this.setTitle("Humans VS Pests");
         this.setLayout(new CardLayout());  //null: telling container all stuff manually
 
-        //Add Panel *screens* (add three pages obj)
+        ////Add human in list
+        humanList = new ArrayList<>();
+        humanList.add(new Human(null,550, 120,new ImageIcon("src/Images/bro.png")));
+        humanList.add(new Human(null,350, 80,new ImageIcon("src/Images/mom.png")));
+        humanList.add(new Human(null,250, 175,new ImageIcon("src/Images/dad.png")));
+        humanList.add(new Human(null,150, 150,new ImageIcon("src/Images/sis.png")));
+
+        //Add insects in list
+        insList = new ArrayList<>();
+        insList.add(new Insects("John",60,100,"Low",false,new ImageIcon("src/Images/ant.png")));
+        insList.add(new Insects("Keren",200,150,"Medium",true,new ImageIcon("src/Images/mosquito.png")));
+        insList.add(new Insects("Taylor",100,120,"Medium",true,new ImageIcon("src/Images/fly.png")));
+
+        //Add mammals in list
+        mamList = new ArrayList<>();
+        mamList.add(new Mammals("Peanut",350, 320, "High",true,new ImageIcon("src/Images/squirrel.png")));
+        mamList.add(new Mammals("Remy",300, 250, "High",true,new ImageIcon("src/Images/rat.png")));
+        mamList.add(new Mammals("Meatloaf",50, 500, "Low",false,new ImageIcon("src/Images/guineaPig.png")));
+
+        // Add Panel *screens* (add three pages obj)
         PageOne screenOne = new PageOne();
         PageTwo screenTwo = new PageTwo();
         PageThree screenThree = new PageThree();
@@ -45,6 +67,8 @@ public class MainFrame extends JFrame {
         reportBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                screenTwo.createFinalChoice();
+                screenThree.displayReport();
                 screenOne.setVisible(false);
                 screenTwo.setVisible(false);
                 screenThree.setVisible(true);
@@ -62,11 +86,6 @@ public class MainFrame extends JFrame {
             }
         });
 
-//        //Create Human
-//        humanList.add(new Human(null,500, 130, new ImageIcon("src/Images/bro.png")));
-//        humanList.add(new Human(null,500, 130, new ImageIcon("src/Images/sis.png")));
-//        humanList.add(new Human(null,500, 130, new ImageIcon("src/Images/mom.png")));
-//        humanList.add(new Human(null,500, 130, new ImageIcon("src/Images/dad.png")));
     }
 
 }

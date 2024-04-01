@@ -1,7 +1,13 @@
 package GUI;
 
+import Classes.Creature;
+import Classes.Human;
+import Classes.Insects;
+
+import java.awt.Font;
+import java.awt.LayoutManager;
+import java.util.ArrayList;
 import javax.swing.*;
-import java.awt.*;
 
 public class PageThree extends JPanel {
     private JTextArea reportText;
@@ -39,5 +45,12 @@ public class PageThree extends JPanel {
     }
 
     public JButton getRestartBtn() {return restartBtn;} //getter for restartBtn
+
+    public void displayReport() {
+        ArrayList<Human> human = MainFrame.humanList;
+        String text ="";
+        text = human.toString();
+        reportText.setText(text);
+    }
 
 }
