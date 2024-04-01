@@ -1,7 +1,15 @@
 package GUI;
 
+import Classes.Insects;
+import Classes.Mammals;
+import Classes.Tools;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class PageTwo extends JPanel {
     private JTextField userName; //box for user to enter name
@@ -14,9 +22,12 @@ public class PageTwo extends JPanel {
     private JRadioButton peeler;
     private JRadioButton  vacuum;
     private JTextArea pestBox;
-    private JButton genHumanBtn;
-    private JButton genPestBtn;
+    private JButton insectsBtn;
+    private ArrayList<Insects> insList;
+    private JButton mammalsBtn;
+    private ArrayList<Mammals> mamList;
     private JButton reportBtn; //report btn for jump into next page
+
     public PageTwo(){
         //Set Panel Properties
         this.setLayout(null);
@@ -77,15 +88,49 @@ public class PageTwo extends JPanel {
         spatula = new JRadioButton("Spatula");
         spatula.setFont(myFont);
         spatula.setBounds(350,275,200,50);
+        spatula.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Tools spatula = new Tools("Spatula",300,"kitchenware");
+                toolBox.setText(spatula.toString());
+            }
+        });
         lid = new JRadioButton("Lid");
         lid.setFont(myFont);
         lid.setBounds(350,325,200,50);
+        lid.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Tools lid = new Tools("Lid", 400,"kitchenware");
+                toolBox.setText(lid.toString());
+            }
+        });
         peeler = new JRadioButton("Peeler");
         peeler.setFont(myFont);
         peeler.setBounds(350,375,200,50);
+        peeler.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Tools peeler = new Tools("Peeler", 80,"kitchenware");
+                toolBox.setText(peeler.toString());
+            }
+        });
         vacuum = new JRadioButton("Vacuum");
         vacuum.setFont(myFont);
         vacuum.setBounds(350,425,200,50);
+        vacuum.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Tools vacuum = new Tools("Vacuum", 1200,"appliances");
+                toolBox.setText(vacuum.toString());
+            }
+        });
+        ButtonGroup grpToolRads = new ButtonGroup();
+        grpToolRads.add(this.spatula);
+        grpToolRads.add(this.lid);
+        grpToolRads.add(this.peeler);
+        grpToolRads.add(this.vacuum);
+
 
         //Pests information
         JLabel pestsInfoLabel = new JLabel("Pest's information: ");
@@ -97,15 +142,36 @@ public class PageTwo extends JPanel {
         pestBox.setBounds(100,525,600,100);
         pestBox.setLineWrap(true);
         pestBox.setEnabled(false);
-        pestBox.setWrapStyleWord(true);//Generate human btn
-        genHumanBtn = new JButton("New Human");
-        genHumanBtn.setFont(myFont);
-        genHumanBtn.setBounds(100,650,150,50);
+        pestBox.setWrapStyleWord(true);
 
-        //Generate pest btn
-        genPestBtn = new JButton("New Pest");
-        genPestBtn.setFont(myFont);
-        genPestBtn.setBounds(275,650,150,50);
+        //Insects btn
+        insectsBtn = new JButton("Insects");
+        insectsBtn.setFont(myFont);
+        insectsBtn.setBounds(100,650,150,50);
+        insList = new ArrayList<>();
+        //Add insects in list
+        insList.add(new Insects("John",60,100,"Low",false));
+        insList.add(new Insects("Amy",200,150,"Medium",true));
+        insList.add(new Insects("Taylor",100,120,"Medium",true));
+        insectsBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
+                int index = random.nextInt(insList.size());
+                pestBox.setText(insList.get(index).toString());
+
+            }
+        });
+
+        //Mammals btn
+        mammalsBtn = new JButton("Mammals");
+        mammalsBtn.setFont(myFont);
+        mammalsBtn.setBounds(275,650,150,50);
+        mamList = new ArrayList<>();
+        //Add mammals in list
+        mamList.add(new Mammals("Peanut",350, 320, "High",true));
+        mamList.add(new Mammals("Remy",300, 250, "High",true));
+        mamList.add(new Mammals("Meatloaf",50, 500, "Low",false));
 
         //Get report btn
         reportBtn = new JButton("FIGHT!");
@@ -129,11 +195,17 @@ public class PageTwo extends JPanel {
         add(vacuum);
         add(pestsInfoLabel);
         add(pestBox);
-        add(genHumanBtn);
-        add(genPestBtn);
+        add(insectsBtn);
+        add(mammalsBtn);
         add(reportBtn);
 
+        //get random insect
+
+        //get random mammal
+
     }
+
+
 
     public JButton getReportBtn() {return reportBtn;}  //getter for reportBtn
 }
