@@ -20,6 +20,6 @@ public abstract class Creature {
 
     @Override
     public String toString() {
-        return "My name is "+ name +".\n Attack base: " + attackBase + ".\n";
+        return "My name is "+ name +". Attack base: " + attackBase + "\n";
     }
 }

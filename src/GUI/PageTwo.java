@@ -159,7 +159,6 @@ public class PageTwo extends JPanel {
                 Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
                 int index = random.nextInt(insList.size());
                 pestBox.setText(insList.get(index).toString());
-
             }
         });
 
@@ -172,6 +171,14 @@ public class PageTwo extends JPanel {
         mamList.add(new Mammals("Peanut",350, 320, "High",true));
         mamList.add(new Mammals("Remy",300, 250, "High",true));
         mamList.add(new Mammals("Meatloaf",50, 500, "Low",false));
+        mammalsBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
+                int index = random.nextInt(mamList.size());
+                pestBox.setText(mamList.get(index).toString());
+            }
+        });
 
         //Get report btn
         reportBtn = new JButton("FIGHT!");

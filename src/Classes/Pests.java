@@ -20,6 +20,6 @@ public class Pests extends Creature {
 
     @Override
     public String toString() {
-        return super.toString() + "HP: "+ HP + ".\n" + "Level: " + level + ".\n";
+        return super.toString() + "HP: "+ HP + "\n" + "Level: " + level + "\n";
     }
 }
