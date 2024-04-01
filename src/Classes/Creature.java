@@ -20,6 +20,11 @@ public abstract class Creature {
         return attackBase;
     }
 
+    public Creature setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "My name is "+ name +". Attack base: " + attackBase + "\n";

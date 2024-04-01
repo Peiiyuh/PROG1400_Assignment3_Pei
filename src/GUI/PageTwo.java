@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class PageTwo extends JPanel {
-    private static JTextField userName; //box for user to enter name
+    private JTextField userName; //box for user to enter name
     private JLabel attackBaseValue;
     private JLabel iqValue;
     private JButton humanGo;
-    //private ArrayList<Human> humanList;
     private JLabel humanPic;
     private JTextArea toolBox;
     private JRadioButton spatula;
@@ -24,9 +23,7 @@ public class PageTwo extends JPanel {
     private JTextArea pestBox;
     private JLabel pestsPic;
     private JButton insectsBtn;
-    //private ArrayList<Insects> insList;
     private JButton mammalsBtn;
-    //private ArrayList<Mammals> mamList;
     private JButton reportBtn; //report btn for jump into next page
 
     public PageTwo(){
@@ -81,13 +78,15 @@ public class PageTwo extends JPanel {
         humanGo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
-                int index = random.nextInt(MainFrame.humanList.size());
-                attackBaseValue.setText(Integer.toString(MainFrame.humanList.get(index).getAttackBase()));
-                iqValue.setText(Integer.toString(MainFrame.humanList.get(index).getIQ())); //https://stackoverflow.com/questions/4841559/how-to-convert-an-int-to-a-string
-                ImageIcon dimg = new ImageIcon(new ImageIcon(String.valueOf(MainFrame.humanList.get(index).getHumanPic())).getImage().getScaledInstance(150,250, Image.SCALE_SMOOTH));
-                humanPic.setIcon(dimg);  //https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
-
+                //for(int i=0; i<character.size(); i++){
+                    Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
+                    int index = random.nextInt(MainFrame.getHumanList().size());
+                    attackBaseValue.setText(Integer.toString(MainFrame.getHumanList().get(index).getAttackBase()));
+                    iqValue.setText(Integer.toString(MainFrame.getHumanList().get(index).getIQ())); //https://stackoverflow.com/questions/4841559/how-to-convert-an-int-to-a-string
+                    ImageIcon dimg = new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getHumanList().get(index).getHumanPic())).getImage().getScaledInstance(150,250, Image.SCALE_SMOOTH));
+                    humanPic.setIcon(dimg);  //https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
+                    MainFrame.setSelectedHumanIndex(index);
+                //}
             }
         });
 
@@ -174,9 +173,9 @@ public class PageTwo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
-                int index = random.nextInt(MainFrame.insList.size());
-                pestBox.setText(MainFrame.insList.get(index).toString());
-                pestsPic.setIcon(new ImageIcon(new ImageIcon(String.valueOf(MainFrame.insList.get(index).getInsPic())).getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH)));
+                int index = random.nextInt(MainFrame.getInsList().size());
+                pestBox.setText(MainFrame.getInsList().get(index).toString());
+                pestsPic.setIcon(new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getInsList().get(index).getInsPic())).getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH)));
             }
         });
 
@@ -189,9 +188,9 @@ public class PageTwo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
-                int index = random.nextInt(MainFrame.mamList.size());
-                pestBox.setText(MainFrame.mamList.get(index).toString());
-                pestsPic.setIcon(new ImageIcon(new ImageIcon(String.valueOf(MainFrame.mamList.get(index).getMamPic())).getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH)));
+                int index = random.nextInt(MainFrame.getMamList().size());
+                pestBox.setText(MainFrame.getMamList().get(index).toString());
+                pestsPic.setIcon(new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getMamList().get(index).getMamPic())).getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH)));
             }
         });
 
@@ -227,8 +226,15 @@ public class PageTwo extends JPanel {
 
     public JButton getReportBtn() {return reportBtn;}  //getter for reportBtn
 
-    public String createFinalChoice(){
+    public void createFinalChoice(){
+        ArrayList<Human> character = MainFrame.getHumanList();
         String name = userName.getText();
-        return name;
+        for(int i =0; i< character.size(); i++) {
+            if(MainFrame.getSelectedHumanIndex()==i){
+                Human selectHuman = character.get(i);
+                selectHuman.setName(name);
+            }
+        }
+
     }
 }

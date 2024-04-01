@@ -47,9 +47,9 @@ public class PageThree extends JPanel {
     public JButton getRestartBtn() {return restartBtn;} //getter for restartBtn
 
     public void displayReport() {
-        ArrayList<Human> human = MainFrame.humanList;
+        ArrayList<Human> character = MainFrame.getHumanList();
         String text ="";
-        text = human.toString();
+        text = character.get(MainFrame.getSelectedHumanIndex()).toString();
         reportText.setText(text);
     }
 

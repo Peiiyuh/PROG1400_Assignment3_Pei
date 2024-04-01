@@ -12,9 +12,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
-    static ArrayList<Human> humanList;  //don't make it as private bc will be used in PageTwo
-    static ArrayList<Insects> insList;
-    static ArrayList<Mammals> mamList;
+    private static ArrayList<Human> humanList;  //don't make it as private bc will be used in PageTwo
+    private static ArrayList<Insects> insList;
+    private static ArrayList<Mammals> mamList;
+    private static int selectedHumanIndex = 0;
+
     public MainFrame(){
         //Set Frame Properties
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Exit program if hit x
@@ -88,4 +90,14 @@ public class MainFrame extends JFrame {
 
     }
 
+    //Getter
+    public static ArrayList<Human> getHumanList() { return humanList;}
+    public static ArrayList<Insects> getInsList() {return insList;}
+    public static ArrayList<Mammals> getMamList() { return mamList;}
+    public static int getSelectedHumanIndex() {return selectedHumanIndex;}
+
+    //Setter
+    public static void setSelectedHumanIndex(int selectedHumanIndex) {
+        MainFrame.selectedHumanIndex = selectedHumanIndex;
+    }
 }
