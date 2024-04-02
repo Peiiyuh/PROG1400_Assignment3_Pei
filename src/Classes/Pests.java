@@ -11,13 +11,6 @@ public class Pests extends Creature {
         this.level = level;
     }
 
-    public int getHP() {
-        return HP;
-    }
-    public String getLevel() {
-        return level;
-    }
-
     @Override
     public String toString() {
         return super.toString() + "HP: "+ HP + "\n" + "Level: " + level + "\n";

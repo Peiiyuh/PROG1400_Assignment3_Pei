@@ -55,13 +55,8 @@ public class PageThree extends JPanel {
         text += "Tool: \n";
         text += MainFrame.getSelectTool().toString();
         text += "\n\n";
-        text += "Pests: \n";
-        if(MainFrame.getSelectPest() != null){
-            text += MainFrame.getSelectPest().toString();
-        }
-        else{
-            text += "None";
-        }
+        text += "Pest: \n";
+        text += MainFrame.getPestInfoReport(); //PestInfoReport datatype is String, get info from pestBox
         reportText.setText(text);
     }
 

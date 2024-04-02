@@ -84,7 +84,7 @@ public class PageTwo extends JPanel {
                     iqValue.setText(Integer.toString(MainFrame.getHumanList().get(index).getIQ())); //https://stackoverflow.com/questions/4841559/how-to-convert-an-int-to-a-string
                     ImageIcon dimg = new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getHumanList().get(index).getHumanPic())).getImage().getScaledInstance(150,250, Image.SCALE_SMOOTH));
                     humanPic.setIcon(dimg);  //https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
-                    MainFrame.setSelectedHumanIndex(index);
+                    MainFrame.setSelectedHumanIndex(index); //store index in SelectHumanIndex
             }
         });
 
@@ -170,11 +170,11 @@ public class PageTwo extends JPanel {
         insectsBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //System.out.println("InsBtn clicked"); //testing
                 Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
                 int index = random.nextInt(MainFrame.getInsList().size());
                 pestBox.setText(MainFrame.getInsList().get(index).toString());
                 pestsPic.setIcon(new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getInsList().get(index).getInsPic())).getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH)));
-                MainFrame.setSelectInsectIndex(index);
             }
         });
 
@@ -186,11 +186,11 @@ public class PageTwo extends JPanel {
         mammalsBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //System.out.println("MamBtn clicked"); //testing
                 Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
                 int index = random.nextInt(MainFrame.getMamList().size());
                 pestBox.setText(MainFrame.getMamList().get(index).toString());
                 pestsPic.setIcon(new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getMamList().get(index).getMamPic())).getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH)));
-                MainFrame.setSelectMammalIndex(index);
             }
         });
 
@@ -198,23 +198,6 @@ public class PageTwo extends JPanel {
         reportBtn = new JButton("FIGHT!");
         reportBtn.setFont(myFont);
         reportBtn.setBounds(550,650,150,50);
-        reportBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ArrayList<Insects> insect = MainFrame.getInsList();
-                ArrayList<Mammals> mammal = MainFrame.getMamList();
-                if (insectsBtn.isSelected()){
-                    int selectInsectIndex = MainFrame.getSelectInsectIndex();
-                    Insects selectIns = insect.get(selectInsectIndex);
-                    MainFrame.setSelectPest(selectIns);
-                }
-                else if(mammalsBtn.isSelected()){
-                    int selectMammalIndex = MainFrame.getSelectMammalIndex();
-                    Mammals selectMam = mammal.get(selectMammalIndex);
-                    MainFrame.setSelectPest(selectMam);
-                }
-            }
-        });
 
         //Add all controls to Panel
         add(programTitle);
@@ -238,20 +221,21 @@ public class PageTwo extends JPanel {
         add(insectsBtn);
         add(mammalsBtn);
         add(reportBtn);
-
     }
 
     public JButton getReportBtn() {return reportBtn;}  //getter for reportBtn
-
     public void createFinalChoice(){
+        //Human info
         ArrayList<Human> character = MainFrame.getHumanList();
         String name = userName.getText();
         for(int i =0; i< character.size(); i++) {
             if(MainFrame.getSelectedHumanIndex()==i){
                 Human selectHuman = character.get(i);
-                selectHuman.setName(name);
+                selectHuman.setName(name); //store and set the name enter by user
             }
         }
+
+        //Tools info   //Should be another efficient way to do....??
         if (spatula.isSelected()){
             MainFrame.setSelectTool(MainFrame.getToolList().get(0));
         }
@@ -265,7 +249,8 @@ public class PageTwo extends JPanel {
             MainFrame.setSelectTool(MainFrame.getToolList().get(3));
         }
 
-
-
+        //Pest info
+        String pestInfo = pestBox.getText(); //grab content from pestBox TextArea
+        MainFrame.setPestInfoReport(pestInfo); //let value store back to mainframe PestInfoReport
     }
 }

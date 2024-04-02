@@ -15,11 +15,9 @@ public abstract class Creature {
     public String getName() {
         return name;
     }
-
     public int getAttackBase() {
         return attackBase;
     }
-
     public Creature setName(String name) {
         this.name = name;
         return this;

@@ -3,7 +3,7 @@ package Classes;
 import javax.swing.*;
 
 public class Insects extends Pests{
-    private static boolean canFly;
+    private boolean canFly;
     private ImageIcon insPic;
 
     //Constructor
@@ -12,7 +12,6 @@ public class Insects extends Pests{
         this.canFly = canFly;
         this.insPic = insPic;
     }
-
     public ImageIcon getInsPic() {
         return insPic;
     }

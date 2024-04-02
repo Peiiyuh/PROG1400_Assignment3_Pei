@@ -12,16 +12,10 @@ public class Tools {
         this.type = type;
     }
 
-    //Getter for all but, not setter bc not allow user to change color properties
-    public String getName() { return name; }
-    public int getWeight() { return weight; }
-    public String getType() { return type; }
-
     @Override
     public String toString() {
         return "Name: " + name + "\n" +
                 "Weight: " + weight + "\n" +
                 "Type: " + type;
     }
-
 }

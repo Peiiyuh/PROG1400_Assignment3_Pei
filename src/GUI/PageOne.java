@@ -28,7 +28,6 @@ public class PageOne extends JPanel {
         frontImage = new ImageIcon(newing);
         programImage.setIcon(frontImage);
 
-
         //button in 1st page
         frontBtn = new JButton("START!");
         frontBtn.setFont(myFont);
@@ -38,8 +37,7 @@ public class PageOne extends JPanel {
         add(programTitle);
         add(programImage);
         add(frontBtn);
-
     }
 
-    public JButton getFrontBtn() {return frontBtn;}  //getter for starter  //??why need static
+    public JButton getFrontBtn() {return frontBtn;}  //getter for frontBtn
 }

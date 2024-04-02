@@ -13,11 +13,9 @@ public class MainFrame extends JFrame {
     private static ArrayList<Insects> insList;
     private static ArrayList<Mammals> mamList;
     private static ArrayList<Tools> toolList;
-    private static int selectedHumanIndex = 0;
-    private static int selectInsectIndex = 0;
-    private static int selectMammalIndex = 0;
+    private static int selectedHumanIndex = 0; //bc randomly generate human state so need store index to report info
     private static Tools selectTool;
-    private static Pests selectPest;
+    private static String pestInfoReport = null; //initial it as null for debug use
 
     public MainFrame(){
         //Set Frame Properties
@@ -96,7 +94,6 @@ public class MainFrame extends JFrame {
                 screenThree.setVisible(false);
             }
         });
-
     }
 
     //Getter
@@ -105,17 +102,11 @@ public class MainFrame extends JFrame {
     public static ArrayList<Insects> getInsList() {return insList;}
     public static ArrayList<Mammals> getMamList() { return mamList;}
     public static int getSelectedHumanIndex() {return selectedHumanIndex;}
-    public static int getSelectInsectIndex() { return selectInsectIndex;}
-    public static int getSelectMammalIndex() { return selectMammalIndex;}
     public static Tools getSelectTool() { return selectTool; }
-    public static Pests getSelectPest() { return selectPest;}
+    public static String getPestInfoReport() {return pestInfoReport;}
 
     //Setter
     public static void setSelectedHumanIndex(int selectedHumanIndex) { MainFrame.selectedHumanIndex = selectedHumanIndex;}
-    public static void setSelectInsectIndex(int selectInsectIndex) { MainFrame.selectInsectIndex = selectInsectIndex;}
-    public static void setSelectMammalIndex(int selectMammalIndex) { MainFrame.selectMammalIndex = selectMammalIndex; }
     public static void setSelectTool(Tools selectTool) { MainFrame.selectTool = selectTool;}
-    public static void setSelectPest(Pests selectPest) {
-        MainFrame.selectPest = selectPest;
-    }
+    public static void setPestInfoReport(String pestInfoReport) {MainFrame.pestInfoReport = pestInfoReport;}
 }
