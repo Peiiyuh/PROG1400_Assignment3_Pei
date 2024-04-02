@@ -3,6 +3,7 @@ package GUI;
 import Classes.Creature;
 import Classes.Human;
 import Classes.Insects;
+import Classes.Tools;
 
 import java.awt.Font;
 import java.awt.LayoutManager;
@@ -48,8 +49,19 @@ public class PageThree extends JPanel {
 
     public void displayReport() {
         ArrayList<Human> character = MainFrame.getHumanList();
-        String text ="";
-        text = character.get(MainFrame.getSelectedHumanIndex()).toString();
+        String text ="Human: \n";
+        text += character.get(MainFrame.getSelectedHumanIndex()).toString();
+        text += "\n\n";
+        text += "Tool: \n";
+        text += MainFrame.getSelectTool().toString();
+        text += "\n\n";
+        text += "Pests: \n";
+        if(MainFrame.getSelectPest() != null){
+            text += MainFrame.getSelectPest().toString();
+        }
+        else{
+            text += "None";
+        }
         reportText.setText(text);
     }
 

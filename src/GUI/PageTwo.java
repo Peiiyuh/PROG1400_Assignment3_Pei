@@ -78,7 +78,6 @@ public class PageTwo extends JPanel {
         humanGo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //for(int i=0; i<character.size(); i++){
                     Random random = new Random(); //https://stackoverflow.com/questions/5034370/retrieving-a-random-item-from-arraylist
                     int index = random.nextInt(MainFrame.getHumanList().size());
                     attackBaseValue.setText(Integer.toString(MainFrame.getHumanList().get(index).getAttackBase()));
@@ -86,7 +85,6 @@ public class PageTwo extends JPanel {
                     ImageIcon dimg = new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getHumanList().get(index).getHumanPic())).getImage().getScaledInstance(150,250, Image.SCALE_SMOOTH));
                     humanPic.setIcon(dimg);  //https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
                     MainFrame.setSelectedHumanIndex(index);
-                //}
             }
         });
 
@@ -108,7 +106,7 @@ public class PageTwo extends JPanel {
         spatula.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tools spatula = new Tools("Spatula",300,"kitchenware");
+                Tools spatula = MainFrame.getToolList().get(0);
                 toolBox.setText(spatula.toString());
             }
         });
@@ -118,7 +116,7 @@ public class PageTwo extends JPanel {
         lid.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tools lid = new Tools("Lid", 400,"kitchenware");
+                Tools lid = MainFrame.getToolList().get(1);
                 toolBox.setText(lid.toString());
             }
         });
@@ -128,7 +126,7 @@ public class PageTwo extends JPanel {
         peeler.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tools peeler = new Tools("Peeler", 80,"kitchenware");
+                Tools peeler = MainFrame.getToolList().get(2);
                 toolBox.setText(peeler.toString());
             }
         });
@@ -138,7 +136,7 @@ public class PageTwo extends JPanel {
         vacuum.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tools vacuum = new Tools("Vacuum", 1200,"appliances");
+                Tools vacuum = MainFrame.getToolList().get(3);
                 toolBox.setText(vacuum.toString());
             }
         });
@@ -176,6 +174,7 @@ public class PageTwo extends JPanel {
                 int index = random.nextInt(MainFrame.getInsList().size());
                 pestBox.setText(MainFrame.getInsList().get(index).toString());
                 pestsPic.setIcon(new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getInsList().get(index).getInsPic())).getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH)));
+                MainFrame.setSelectInsectIndex(index);
             }
         });
 
@@ -191,6 +190,7 @@ public class PageTwo extends JPanel {
                 int index = random.nextInt(MainFrame.getMamList().size());
                 pestBox.setText(MainFrame.getMamList().get(index).toString());
                 pestsPic.setIcon(new ImageIcon(new ImageIcon(String.valueOf(MainFrame.getMamList().get(index).getMamPic())).getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH)));
+                MainFrame.setSelectMammalIndex(index);
             }
         });
 
@@ -198,6 +198,23 @@ public class PageTwo extends JPanel {
         reportBtn = new JButton("FIGHT!");
         reportBtn.setFont(myFont);
         reportBtn.setBounds(550,650,150,50);
+        reportBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Insects> insect = MainFrame.getInsList();
+                ArrayList<Mammals> mammal = MainFrame.getMamList();
+                if (insectsBtn.isSelected()){
+                    int selectInsectIndex = MainFrame.getSelectInsectIndex();
+                    Insects selectIns = insect.get(selectInsectIndex);
+                    MainFrame.setSelectPest(selectIns);
+                }
+                else if(mammalsBtn.isSelected()){
+                    int selectMammalIndex = MainFrame.getSelectMammalIndex();
+                    Mammals selectMam = mammal.get(selectMammalIndex);
+                    MainFrame.setSelectPest(selectMam);
+                }
+            }
+        });
 
         //Add all controls to Panel
         add(programTitle);
@@ -235,6 +252,20 @@ public class PageTwo extends JPanel {
                 selectHuman.setName(name);
             }
         }
+        if (spatula.isSelected()){
+            MainFrame.setSelectTool(MainFrame.getToolList().get(0));
+        }
+        else if (lid.isSelected()){
+            MainFrame.setSelectTool(MainFrame.getToolList().get(1));
+        }
+        else if (peeler.isSelected()){
+            MainFrame.setSelectTool(MainFrame.getToolList().get(2));
+        }
+        else if (vacuum.isSelected()){
+            MainFrame.setSelectTool(MainFrame.getToolList().get(3));
+        }
+
+
 
     }
 }

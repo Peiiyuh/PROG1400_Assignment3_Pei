@@ -1,9 +1,6 @@
 package GUI;
 
-import Classes.Human;
-import Classes.Insects;
-import Classes.Mammals;
-import Classes.Tools;
+import Classes.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +12,12 @@ public class MainFrame extends JFrame {
     private static ArrayList<Human> humanList;  //don't make it as private bc will be used in PageTwo
     private static ArrayList<Insects> insList;
     private static ArrayList<Mammals> mamList;
+    private static ArrayList<Tools> toolList;
     private static int selectedHumanIndex = 0;
+    private static int selectInsectIndex = 0;
+    private static int selectMammalIndex = 0;
+    private static Tools selectTool;
+    private static Pests selectPest;
 
     public MainFrame(){
         //Set Frame Properties
@@ -30,6 +32,13 @@ public class MainFrame extends JFrame {
         humanList.add(new Human(null,350, 80,new ImageIcon("src/Images/mom.png")));
         humanList.add(new Human(null,250, 175,new ImageIcon("src/Images/dad.png")));
         humanList.add(new Human(null,150, 150,new ImageIcon("src/Images/sis.png")));
+
+        //Add tools in list
+        toolList = new ArrayList<>();
+        toolList.add(new Tools("Spatula",300,"kitchenware"));
+        toolList.add(new Tools("Lid", 400,"kitchenware"));
+        toolList.add(new Tools("Peeler", 80,"kitchenware"));
+        toolList.add(new Tools("Vacuum", 1200,"appliances"));
 
         //Add insects in list
         insList = new ArrayList<>();
@@ -92,12 +101,21 @@ public class MainFrame extends JFrame {
 
     //Getter
     public static ArrayList<Human> getHumanList() { return humanList;}
+    public static ArrayList<Tools> getToolList() { return toolList;}
     public static ArrayList<Insects> getInsList() {return insList;}
     public static ArrayList<Mammals> getMamList() { return mamList;}
     public static int getSelectedHumanIndex() {return selectedHumanIndex;}
+    public static int getSelectInsectIndex() { return selectInsectIndex;}
+    public static int getSelectMammalIndex() { return selectMammalIndex;}
+    public static Tools getSelectTool() { return selectTool; }
+    public static Pests getSelectPest() { return selectPest;}
 
     //Setter
-    public static void setSelectedHumanIndex(int selectedHumanIndex) {
-        MainFrame.selectedHumanIndex = selectedHumanIndex;
+    public static void setSelectedHumanIndex(int selectedHumanIndex) { MainFrame.selectedHumanIndex = selectedHumanIndex;}
+    public static void setSelectInsectIndex(int selectInsectIndex) { MainFrame.selectInsectIndex = selectInsectIndex;}
+    public static void setSelectMammalIndex(int selectMammalIndex) { MainFrame.selectMammalIndex = selectMammalIndex; }
+    public static void setSelectTool(Tools selectTool) { MainFrame.selectTool = selectTool;}
+    public static void setSelectPest(Pests selectPest) {
+        MainFrame.selectPest = selectPest;
     }
 }
