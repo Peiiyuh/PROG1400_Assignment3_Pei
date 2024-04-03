@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
     private static ArrayList<Mammals> mamList;
     private static ArrayList<Tools> toolList;
     private static int selectedHumanIndex = 0; //bc randomly generate human state so need store index to report info
-    private static Tools selectTool;
+    //private static Tools selectTool;
     private static String pestInfoReport = null; //initial it as null for debug use
 
     public MainFrame(){
@@ -26,10 +26,10 @@ public class MainFrame extends JFrame {
 
         ////Add human in list
         humanList = new ArrayList<>();
-        humanList.add(new Human(null,550, 120,new ImageIcon("src/Images/bro.png")));
-        humanList.add(new Human(null,350, 80,new ImageIcon("src/Images/mom.png")));
-        humanList.add(new Human(null,250, 175,new ImageIcon("src/Images/dad.png")));
-        humanList.add(new Human(null,150, 150,new ImageIcon("src/Images/sis.png")));
+        humanList.add(new Human(null,550, 120,new ImageIcon("src/Images/bro.png"),null));
+        humanList.add(new Human(null,350, 80,new ImageIcon("src/Images/mom.png"),null));
+        humanList.add(new Human(null,250, 175,new ImageIcon("src/Images/dad.png"),null));
+        humanList.add(new Human(null,150, 150,new ImageIcon("src/Images/sis.png"),null));
 
         //Add tools in list
         toolList = new ArrayList<>();
@@ -102,11 +102,11 @@ public class MainFrame extends JFrame {
     public static ArrayList<Insects> getInsList() {return insList;}
     public static ArrayList<Mammals> getMamList() { return mamList;}
     public static int getSelectedHumanIndex() {return selectedHumanIndex;}
-    public static Tools getSelectTool() { return selectTool; }
+    //public static Tools getSelectTool() { return selectTool; }
     public static String getPestInfoReport() {return pestInfoReport;}
 
     //Setter
     public static void setSelectedHumanIndex(int selectedHumanIndex) { MainFrame.selectedHumanIndex = selectedHumanIndex;}
-    public static void setSelectTool(Tools selectTool) { MainFrame.selectTool = selectTool;}
+    //public static void setSelectTool(Tools selectTool) { MainFrame.selectTool = selectTool;}
     public static void setPestInfoReport(String pestInfoReport) {MainFrame.pestInfoReport = pestInfoReport;}
 }

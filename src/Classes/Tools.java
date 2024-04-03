@@ -14,7 +14,7 @@ public class Tools {
 
     @Override
     public String toString() {
-        return "Name: " + name + "\n" +
+        return "\nName: " + name + "\n" +
                 "Weight: " + weight + "\n" +
                 "Type: " + type;
     }
