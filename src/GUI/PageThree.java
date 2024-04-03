@@ -52,8 +52,6 @@ public class PageThree extends JPanel {
         String text ="Hi there, \n";
         text += character.get(MainFrame.getSelectedHumanIndex()).toString();
         text += "\n====================";
-        //text += "Tool: \n";
-        //text += MainFrame.getSelectTool().toString();
         text += "\n\n";
         text += "Pest: \n";
         text += MainFrame.getPestInfoReport(); //PestInfoReport datatype is String, get info from pestBox

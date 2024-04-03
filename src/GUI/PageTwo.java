@@ -233,19 +233,15 @@ public class PageTwo extends JPanel {
                 selectHuman.setName(name); //store and set the name in selectHuman
                 //Tools info   //Should be another efficient way to do....??
                 if (spatula.isSelected()){
-                    //MainFrame.setSelectTool(MainFrame.getToolList().get(0));
                     selectHuman.setTool(MainFrame.getToolList().get(0));
                 }
                 else if (lid.isSelected()){
-                    //MainFrame.setSelectTool(MainFrame.getToolList().get(1));
                     selectHuman.setTool(MainFrame.getToolList().get(1));
                 }
                 else if (peeler.isSelected()){
-                    //MainFrame.setSelectTool(MainFrame.getToolList().get(2));
                     selectHuman.setTool(MainFrame.getToolList().get(2));
                 }
                 else if (vacuum.isSelected()){
-                    //MainFrame.setSelectTool(MainFrame.getToolList().get(3));
                     selectHuman.setTool(MainFrame.getToolList().get(3));
                 }
             }

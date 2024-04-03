@@ -23,6 +23,7 @@ public class Human extends Creature{
         return humanPic;
     }
 
+    //Setter
     public Human setTool(Tools tool) {
         this.tool = tool;
         return this;

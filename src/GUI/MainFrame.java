@@ -14,7 +14,6 @@ public class MainFrame extends JFrame {
     private static ArrayList<Mammals> mamList;
     private static ArrayList<Tools> toolList;
     private static int selectedHumanIndex = 0; //bc randomly generate human state so need store index to report info
-    //private static Tools selectTool;
     private static String pestInfoReport = null; //initial it as null for debug use
 
     public MainFrame(){
@@ -107,6 +106,5 @@ public class MainFrame extends JFrame {
 
     //Setter
     public static void setSelectedHumanIndex(int selectedHumanIndex) { MainFrame.selectedHumanIndex = selectedHumanIndex;}
-    //public static void setSelectTool(Tools selectTool) { MainFrame.selectTool = selectTool;}
     public static void setPestInfoReport(String pestInfoReport) {MainFrame.pestInfoReport = pestInfoReport;}
 }
