@@ -1,7 +1,5 @@
 package Classes;
 
-import static java.lang.Integer.valueOf;
-
 public abstract class Creature {
     private String name;
     private int attackBase;
@@ -12,6 +10,7 @@ public abstract class Creature {
         this.attackBase = attackBase;
     }
 
+    //Getter
     public String getName() {
         return name;
     }

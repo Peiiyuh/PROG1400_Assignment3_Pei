@@ -61,7 +61,7 @@ public class MainFrame extends JFrame {
         add(screenThree);
 
         //Click starter btn in 1st page to go to 2nd page
-        JButton frontBtn = screenOne.getFrontBtn();  //why need static??
+        JButton frontBtn = screenOne.getFrontBtn();
         frontBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,7 +72,7 @@ public class MainFrame extends JFrame {
         });
 
         //Click report btn in 2nd page to go to 3rd page
-        JButton reportBtn = screenTwo.getReportBtn();  //why need static??
+        JButton reportBtn = screenTwo.getReportBtn();
         reportBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,7 +85,7 @@ public class MainFrame extends JFrame {
         });
 
         //Click restart btn in 3rd page to go to 1st page
-        JButton endBtn = screenThree.getRestartBtn();  //why need static??
+        JButton endBtn = screenThree.getRestartBtn();
         endBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

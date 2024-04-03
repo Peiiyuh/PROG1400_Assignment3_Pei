@@ -59,5 +59,4 @@ public class PageThree extends JPanel {
         text += MainFrame.getPestInfoReport(); //PestInfoReport datatype is String, get info from pestBox
         reportText.setText(text);
     }
-
 }

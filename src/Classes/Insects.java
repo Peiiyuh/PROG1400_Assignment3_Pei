@@ -12,6 +12,8 @@ public class Insects extends Pests{
         this.canFly = canFly;
         this.insPic = insPic;
     }
+
+    //Getter
     public ImageIcon getInsPic() {
         return insPic;
     }

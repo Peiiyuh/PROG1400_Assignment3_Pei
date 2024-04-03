@@ -13,6 +13,7 @@ public class Human extends Creature{
         this.humanPic = humanPic;
     }
 
+    //Getter
     public int getIQ() {
         return IQ;
     }

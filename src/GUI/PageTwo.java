@@ -167,7 +167,7 @@ public class PageTwo extends JPanel {
         insectsBtn = new JButton("Insects");
         insectsBtn.setFont(myFont);
         insectsBtn.setBounds(100,650,150,50);
-        insectsBtn.addActionListener(new ActionListener() {
+        insectsBtn.addActionListener(new ActionListener() { //NOTE: JButton doesn't match to .isSelected()//
             @Override
             public void actionPerformed(ActionEvent e) {
                 //System.out.println("InsBtn clicked"); //testing
@@ -182,8 +182,7 @@ public class PageTwo extends JPanel {
         mammalsBtn = new JButton("Mammals");
         mammalsBtn.setFont(myFont);
         mammalsBtn.setBounds(275,650,150,50);
-
-        mammalsBtn.addActionListener(new ActionListener() {
+        mammalsBtn.addActionListener(new ActionListener() { //NOTE: JButton doesn't match to .isSelected()//
             @Override
             public void actionPerformed(ActionEvent e) {
                 //System.out.println("MamBtn clicked"); //testing
@@ -230,8 +229,8 @@ public class PageTwo extends JPanel {
         String name = userName.getText();
         for(int i =0; i< character.size(); i++) {
             if(MainFrame.getSelectedHumanIndex()==i){
-                Human selectHuman = character.get(i);
-                selectHuman.setName(name); //store and set the name enter by user
+                Human selectHuman = character.get(i); //let selectHuman = the human state that randomly generated
+                selectHuman.setName(name); //store and set the name in selectHuman
             }
         }
 

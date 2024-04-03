@@ -13,6 +13,7 @@ public class Mammals extends Pests{
         this.mamPic = mamPic;
     }
 
+    //Getter
     public ImageIcon getMamPic() {
         return mamPic;
     }
